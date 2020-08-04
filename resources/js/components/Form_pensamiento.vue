@@ -34,15 +34,15 @@
         },
         methods:{
             new_pensamiento(){
-                var f=new Date();
-                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                let pensamiento = {
-                    id: 3,
-                    descripcion: this.descripcion,
-                    created_at: f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()
+                const params = {
+                    descripcion : this.descripcion
                 };
-                this.$emit('new', pensamiento);
-                this.descripcion = '';
+                this.descripcion = ''; 
+
+                axios.post('/pensamientos', params).then((response) => {
+                    const pensamiento = response.data;
+                    this.$emit('new_pensamiento', response.data);
+                });  
             }
         }
     }

@@ -1943,15 +1943,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     new_pensamiento: function new_pensamiento() {
-      var f = new Date();
-      var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-      var pensamiento = {
-        id: 3,
-        descripcion: this.descripcion,
-        created_at: f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear()
+      var _this = this;
+
+      var params = {
+        descripcion: this.descripcion
       };
-      this.$emit('new', pensamiento);
       this.descripcion = '';
+      axios.post('/pensamientos', params).then(function (response) {
+        var pensamiento = response.data;
+
+        _this.$emit('new_pensamiento', response.data);
+      });
     }
   }
 });
@@ -2000,7 +2002,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    var _this = this;
+
+    axios.get('/pensamientos').then(function (response) {
+      _this.pensamientos = response.data;
+    });
   },
   methods: {
     add_pensamiento: function add_pensamiento(_pensamiento) {
@@ -2008,6 +2014,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     eliminar_pensamiento: function eliminar_pensamiento(index) {
       this.pensamientos.splice(index, 1);
+    },
+    update_pensamiento: function update_pensamiento(index, pensamiento) {
+      this.pensamientos[index] = pensamiento;
     }
   }
 });
@@ -2041,18 +2050,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: ['pensamiento'],
   data: function data() {
-    return {};
+    return {
+      editMode: false
+    };
   },
   mounted: function mounted() {
-    console.log('Component mougnted.');
+    console.log('Component mounted.');
   },
   methods: {
     onClickDelete: function onClickDelete() {
-      this.$emit('delete');
+      var _this = this;
+
+      axios["delete"]("/pensamientos/".concat(this.pensamiento.id)).then(function () {
+        _this.$emit('delete');
+      });
+    },
+    onClickEdicion: function onClickEdicion() {
+      this.editMode = true;
+    },
+    onClickUpdate: function onClickUpdate() {
+      var _this2 = this;
+
+      var params = {
+        descripcion: this.pensamiento.descripcion
+      };
+      axios.put("/pensamientos/".concat(this.pensamiento.id), params).then(function (response) {
+        _this2.editMode = false;
+        var thought = response.data;
+
+        _this2.$emit('update', thought);
+      });
+    },
+    onClickCancel: function onClickCancel() {
+      this.editMode = false;
     }
   }
 });
@@ -37732,7 +37777,9 @@ var render = function() {
       "div",
       { staticClass: "col-md-8" },
       [
-        _c("form-pensamiento", { on: { new: _vm.add_pensamiento } }),
+        _c("form-pensamiento", {
+          on: { new_pensamiento: _vm.add_pensamiento }
+        }),
         _vm._v(" "),
         _vm._l(_vm.pensamientos, function(pensamiento, index) {
           return _c("pensamiento-component", {
@@ -37741,6 +37788,9 @@ var render = function() {
             on: {
               delete: function($event) {
                 return _vm.eliminar_pensamiento(index)
+              },
+              update: function($event) {
+                return _vm.update_pensamiento(index, _vm.arg)
               }
             }
           })
@@ -37784,31 +37834,92 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("p", [
-          _c("b", [_vm._v("Nombre herramienta:")]),
-          _vm._v(" "),
-          _c("b", { staticStyle: { color: "blue" } }, [
-            _vm._v(_vm._s(_vm.pensamiento.descripcion))
-          ])
-        ])
+        _vm.editMode
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pensamiento.descripcion,
+                  expression: "pensamiento.descripcion"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.pensamiento.descripcion },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.pensamiento, "descripcion", $event.target.value)
+                }
+              }
+            })
+          : _c("p", [
+              _c("b", [_vm._v("Nombre herramienta:")]),
+              _vm._v(" "),
+              _c("b", { staticStyle: { color: "blue" } }, [
+                _vm._v(_vm._s(_vm.pensamiento.descripcion))
+              ])
+            ])
       ]),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "panel-footer", staticStyle: { padding: "20px" } },
         [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.onClickDelete()
-                }
-              }
-            },
-            [_vm._v("\n            eliminar\n        ")]
-          )
+          _vm.editMode
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      return _vm.onClickUpdate()
+                    }
+                  }
+                },
+                [_vm._v("\n            Guardar cambios\n        ")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: {
+                    click: function($event) {
+                      return _vm.onClickEdicion()
+                    }
+                  }
+                },
+                [_vm._v("\n            Editar\n        ")]
+              ),
+          _vm._v(" "),
+          _vm.editMode
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      return _vm.onClickCancel()
+                    }
+                  }
+                },
+                [_vm._v("\n            cancelar\n        ")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      return _vm.onClickDelete()
+                    }
+                  }
+                },
+                [_vm._v("\n            eliminar    \n        ")]
+              )
         ]
       )
     ]

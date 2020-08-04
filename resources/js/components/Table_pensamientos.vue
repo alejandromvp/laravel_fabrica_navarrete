@@ -1,29 +1,21 @@
 <template>
     <div class="card" style="margin-top:5px;border-color:blue;">
-        <div class="card-header">Publicado en {{pensamiento.created_at}}</div>
-        <div class="card-body">
-            <input v-if="editMode" type="text" class="form-control" v-model ="pensamiento.descripcion">
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in pensamiento"
+                :key="item.id">
+                    <th v-text="item.id"></th>
+                    <th v-text="item.descripcion"></th>
+                </tr>
+            </tbody>
+        </table>
 
-            <p v-else><b>Nombre herramienta:</b> <b style="color:blue;">{{pensamiento.descripcion}}</b></p>
-        </div>
-        <div class="panel-footer" style="padding:20px;">
-            <button v-if="editMode" class="btn btn-danger"  v-on:click="onClickUpdate()">
-                Guardar cambios
-            </button>
-
-            <button v-else class="btn btn-default" v-on:click="onClickEdicion()">
-                Editar
-            </button>
-            
-            
-            <button v-if="editMode" class="btn btn-danger" v-on:click="onClickCancel()">
-                cancelar
-            </button>
-            <button v-else class="btn btn-danger" v-on:click="onClickDelete()">
-                eliminar    
-            </button>
-            
-        </div> 
     </div>
 </template>
 
