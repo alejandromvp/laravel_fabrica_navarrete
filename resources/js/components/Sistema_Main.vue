@@ -1,8 +1,8 @@
 <template>
-    <div class="row">
-        <div class="col-md-8">
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <table-pensamientos :pensamiento="pensamientos"></table-pensamientos>
             <form-pensamiento @new_pensamiento="add_pensamiento"></form-pensamiento>
-
             <pensamiento-component v-for="(pensamiento, index) in pensamientos" 
                 :key="pensamiento.id"
                 :pensamiento="pensamiento"
@@ -10,7 +10,33 @@
                  @update="update_pensamiento(index, arg)">
             </pensamiento-component>
         </div>
+    </div> -->
+    <div class="Main">
+        <div class="row">
+            <div class="col-sm-2 fondo_panel p-0">
+                <panel-left-main></panel-left-main>
+            </div>
+            <div class="col-sm-10 p-1 fondo_contenido">
+                <div style="height:540px;">
+                    <seccion-categoria></seccion-categoria>
+                    <seccion-producto v-if="false"></seccion-producto>
+                </div>
+            </div>
+        </div>       
+        <div class="row">
+            <div class="col-sm-12 p-0 fondo_contenido">
+                <footer class="fondo_footer"> 
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            © 2020 Vibrados Navarrete 
+                        </div>
+                    </div>  
+                </footer>
+            </div>
+        </div>
     </div>
+    
+
 </template>
 
 <script>
@@ -43,7 +69,9 @@
             },
             update_pensamiento(index, pensamiento){
                 this.pensamientos[index] = pensamiento;
-
+            },
+            obtener_pensamientos(){
+                return this.pensamientos;
             }
         }
     }

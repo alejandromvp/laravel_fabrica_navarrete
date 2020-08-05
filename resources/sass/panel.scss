@@ -1,0 +1,26 @@
+
+.fondo_panel{
+    background-color: #393e46;
+}
+
+.flex_column_center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    text-align: center; 
+}
+
+.panel{
+    margin: 10px 0 0 0;
+}
+.panel nav .selected_li_button button{
+    color:#00adb5;
+    font-weight: bold;
+    padding: 10px 10px 10px 10px;
+}
+
+.panel nav .selected_li_button button:hover{
+    background-color: #eeeeee;
+    text-decoration: none;
+}

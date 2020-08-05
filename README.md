@@ -10,8 +10,7 @@ config/app.php => 'locale' => 'es'
 
 ## uso de laravel mix
 laravel mix nos permite usar webpack para compilar el codigo javascript y se genere archivo dentro de public
-
-este comando permite que webpack observe si hay cambios en archivos y los compile
+este comando permite que webpack observe si hay cambios en archivos y los compile.
 npm run watch
 
 # comandos artisan

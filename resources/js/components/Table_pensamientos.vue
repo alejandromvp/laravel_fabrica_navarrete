@@ -25,34 +25,12 @@
         props: ['pensamiento'],
         data(){
             return{
-                editMode:false
+                editMode:false,
+                items: []
             };
         },
         mounted() {
-            console.log('Component mounted.')
-        },
-        methods: {
-            onClickDelete(){
-                    axios.delete(`/pensamientos/${this.pensamiento.id}`).then(() => {
-                    this.$emit('delete');
-                });
-            },
-            onClickEdicion(){
-                this.editMode = true;
-            },
-            onClickUpdate(){
-                const params = {
-                    descripcion: this.pensamiento.descripcion
-                };
-                axios.put(`/pensamientos/${this.pensamiento.id}`, params).then((response) => {
-                    this.editMode = false;
-                    const thought = response.data;
-                    this.$emit('update', thought);
-                });
-            },
-            onClickCancel(){
-                 this.editMode = false;
-            }
+            this.items = this.$emit('obtener_pensamiento');
         }
     }
 </script>
