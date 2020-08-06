@@ -10955,6 +10955,10 @@ a.text-dark:focus {
   text-decoration: none;
 }
 
+.active {
+  background-color: #eeeeee;
+}
+
 .fondo_contenido {
   background-color: #222831;
 }
@@ -10962,6 +10966,10 @@ a.text-dark:focus {
 .fondo_footer {
   background-color: #eeeeee;
   padding: 15px;
+}
+
+.Main_Categorias {
+  font-size: 12px;
 }
 
 h1 {

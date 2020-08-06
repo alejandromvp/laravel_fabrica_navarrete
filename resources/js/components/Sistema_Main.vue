@@ -16,8 +16,8 @@
             <div class="col-sm-2 fondo_panel p-0">
                 <panel-left-main></panel-left-main>
             </div>
-            <div class="col-sm-10 p-1 fondo_contenido">
-                <div style="height:540px;">
+            <div class="col-sm-10 fondo_contenido">
+                <div class="p-2" style="height:540px;">
                     <seccion-categoria></seccion-categoria>
                     <seccion-producto v-if="false"></seccion-producto>
                 </div>

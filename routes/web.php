@@ -21,4 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// rutas Secciones Panel
+Route::resource('categorias', 'Seccion_panel\CategoriaController');
+
 Route::apiResource('pensamientos', 'API\PensamientoController');

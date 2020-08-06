@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid" style="background-color: lightblue;">
+<div class="container-fluid">
      <container></container>
 </div>
 @endsection

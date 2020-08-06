@@ -2004,6 +2004,8 @@ __webpack_require__.r(__webpack_exports__);
   props: [],
   data: function data() {
     return {
+      boton_style: 'btn btn-default',
+      active: ['', '', '', '', '', '', ''],
       editMode: false
     };
   },
@@ -2013,6 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onClickCategorias: function onClickCategorias() {
       console.log("seccion categorias");
+      this.active[2] = 'active';
     },
     onClickProductos: function onClickProductos() {
       console.log("seccion productos");
@@ -2256,18 +2259,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: [],
   data: function data() {
     return {
-      editMode: false
+      categoria: '',
+      array_categorias: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     console.log('Component mounted.');
+    axios.get('/categorias').then(function (response) {
+      _this.array_categorias = response.data;
+    });
   },
-  methods: {}
+  methods: {
+    onClickAddCategorias: function onClickAddCategorias() {
+      var _this2 = this;
+
+      var params = {
+        descripcion: this.categoria
+      };
+      this.categoria = '';
+      axios.post('/categorias', params).then(function (response) {
+        console.log("categoria agregada");
+
+        _this2.array_categorias.push(response.data);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -37977,7 +38043,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[0]],
             on: {
               click: function($event) {
                 return _vm.onClickControl_Panel()
@@ -37990,7 +38056,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[1]],
             on: {
               click: function($event) {
                 return _vm.onClickAccesos()
@@ -38003,7 +38069,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[2]],
             on: {
               click: function($event) {
                 return _vm.onClickCategorias()
@@ -38016,7 +38082,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[3]],
             on: {
               click: function($event) {
                 return _vm.onClickProductos()
@@ -38029,7 +38095,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[4]],
             on: {
               click: function($event) {
                 return _vm.onClickMultimedia()
@@ -38042,7 +38108,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[5]],
             on: {
               click: function($event) {
                 return _vm.onClickVentas()
@@ -38055,7 +38121,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default",
+            class: [_vm.boton_style, _vm.active[6]],
             on: {
               click: function($event) {
                 return _vm.onClickReporte()
@@ -38224,10 +38290,10 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-10 p-1 fondo_contenido" }, [
+      _c("div", { staticClass: "col-sm-10 fondo_contenido" }, [
         _c(
           "div",
-          { staticStyle: { height: "540px" } },
+          { staticClass: "p-2", staticStyle: { height: "540px" } },
           [
             _c("seccion-categoria"),
             _vm._v(" "),
@@ -38342,15 +38408,120 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "Main_Categorias" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("\n                    AGREGAR CATEGORIA\n                ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                attrs: { action: "" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onClickAddCategorias()
+                  }
+                }
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.categoria,
+                      expression: "categoria"
+                    }
+                  ],
+                  staticClass: "form-control mb-3",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Nombre de la categoria"
+                  },
+                  domProps: { value: _vm.categoria },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.categoria = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [_vm._v("Agregar categoria")]
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v(
+              "\n                    LISTA DE CATEGORIAS\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("table", { staticClass: "table table-bordered" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.array_categorias, function(item) {
+                  return _c("tr", { key: item.id }, [
+                    _c("th", { domProps: { textContent: _vm._s(item.id) } }),
+                    _vm._v(" "),
+                    _c("th", {
+                      domProps: { textContent: _vm._s(item.descripcion) }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(1, true)
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Main" }, [
-      _c("h1", [_vm._v("Categorias")])
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Codigo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Categoria")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Acciones")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("th", [
+      _c("button", { staticClass: "btn btn-info" }, [_vm._v("Editar")]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Eliminar")])
     ])
   }
 ]
@@ -38375,16 +38546,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "Main" })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Main" }, [_c("h1", [_vm._v("productos")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

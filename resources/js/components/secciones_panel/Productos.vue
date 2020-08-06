@@ -1,6 +1,6 @@
 <template>
     <div class="Main">
-        <h1>productos</h1>
+        
     </div>
 </template>
 
@@ -17,6 +17,7 @@
             console.log('Component mounted.') 
         },
         methods: {
+            
         }
     }
 </script>
