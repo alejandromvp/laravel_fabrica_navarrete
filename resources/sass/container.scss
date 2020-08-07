@@ -30,4 +30,9 @@
 }
 .fondo_contenido{
     background-color: $color4;
+    min-height: 900px;
+}
+
+.table th, .table td {
+    padding: 0.5rem;
 }

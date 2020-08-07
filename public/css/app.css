@@ -11000,6 +11000,12 @@ a.text-dark:focus {
 
 .fondo_contenido {
   background-color: #80b918;
+  min-height: 900px;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
 }
 
 .fondo_footer {
