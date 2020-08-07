@@ -80,7 +80,7 @@
             @endif
 
             <div class="content">
-            <img src="https://www.lnbchile.com/wp-content/uploads/2019/08/logo_uc-200x200.png" alt="">
+            <img src="https://joseantoniosaiz.com/wp-content/uploads/2013/05/linechart.png" alt="">
                 <h1>Vibrados Navarrete</h1>
             </div>
         </div>
