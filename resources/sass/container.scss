@@ -1,3 +1,10 @@
+.navbar_color{
+    background-color: $color2;
+}
+.navbar_color .container .navbar-brand{
+    color:white;
+}
+
 .fondo_contenido{
-    background-color: #222831;
+    background-color: $color4;
 }

@@ -1,6 +1,6 @@
 
 .fondo_panel{
-    background-color: #393e46;
+    background-color: $color1;
 }
 
 .flex_column_center{
@@ -12,12 +12,14 @@
 }
 
 .panel{
-    margin: 10px 0 0 0;
+    margin: 0px 0 0 0;
 }
 .panel nav .selected_li_button button{
-    color:#00adb5;
+    color: $color2;
     font-weight: bold;
     padding: 10px 10px 10px 10px;
+    border-bottom: 2px solid $color2;
+    border-radius: 2px;
 }
 
 .panel nav .selected_li_button button:hover{

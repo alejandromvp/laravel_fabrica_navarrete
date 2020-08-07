@@ -25,9 +25,14 @@ Vue.component('pensamiento-component', require('./components/PensamientoComponen
 Vue.component('form-pensamiento', require('./components/Form_pensamiento.vue').default);
 Vue.component('panel-left-main', require('./components/Panel_sistema.vue').default);
 
-//################### categorias ###################################################
+//################### secciones Panel Menu ###################################################
+Vue.component('panel-control', require('./components/secciones_panel/Panel_control.vue').default);
+Vue.component('component-accesos', require('./components/secciones_panel/Accesos.vue').default);
 Vue.component('seccion-categoria', require('./components/secciones_panel/Categorias.vue').default);
 Vue.component('seccion-producto', require('./components/secciones_panel/Productos.vue').default);
+Vue.component('component-multimedia', require('./components/secciones_panel/Multimedia.vue').default);
+Vue.component('ventas', require('./components/secciones_panel/Ventas.vue').default);
+Vue.component('reporte-ventas', require('./components/secciones_panel/Reporte_ventas.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

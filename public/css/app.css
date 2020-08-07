@@ -10929,7 +10929,7 @@ a.text-dark:focus {
 }
 
 .fondo_panel {
-  background-color: #393e46;
+  background-color: #8DC63F;
 }
 
 .flex_column_center {
@@ -10941,13 +10941,15 @@ a.text-dark:focus {
 }
 
 .panel {
-  margin: 10px 0 0 0;
+  margin: 0px 0 0 0;
 }
 
 .panel nav .selected_li_button button {
-  color: #00adb5;
+  color: #00517A;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
+  border-bottom: 2px solid #00517A;
+  border-radius: 2px;
 }
 
 .panel nav .selected_li_button button:hover {
@@ -10959,13 +10961,22 @@ a.text-dark:focus {
   background-color: #eeeeee;
 }
 
+.navbar_color {
+  background-color: #00517A;
+}
+
+.navbar_color .container .navbar-brand {
+  color: white;
+}
+
 .fondo_contenido {
-  background-color: #222831;
+  background-color: #D3E1E4;
 }
 
 .fondo_footer {
-  background-color: #eeeeee;
+  background-color: #00517A;
   padding: 15px;
+  color: white;
 }
 
 .Main_Categorias {
