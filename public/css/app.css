@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+/* $color1: #8DC63F;
+$color2: #00517A;
+$color3: #51C6D9;
+$color4: #D3E1E4;
+$color5: #DDE8EA; */
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10929,7 +10935,7 @@ a.text-dark:focus {
 }
 
 .fondo_panel {
-  background-color: #8DC63F;
+  background-color: #007f5f;
 }
 
 .flex_column_center {
@@ -10945,36 +10951,59 @@ a.text-dark:focus {
 }
 
 .panel nav .selected_li_button button {
-  color: #00517A;
+  color: white;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
-  border-bottom: 2px solid #00517A;
-  border-radius: 2px;
+  border-bottom: 2px solid #80b918;
 }
 
 .panel nav .selected_li_button button:hover {
-  background-color: #eeeeee;
+  background-color: #55a630;
   text-decoration: none;
 }
 
 .active {
-  background-color: #eeeeee;
+  background-color: #55a630;
 }
 
 .navbar_color {
-  background-color: #00517A;
+  background-color: #2b9348;
 }
 
 .navbar_color .container .navbar-brand {
   color: white;
 }
 
+.user_logging_label a {
+  color: white;
+}
+
+.cerrar_sesion {
+  background-color: #bfd200;
+}
+
+.cerrar_sesion a:hover {
+  background-color: #ffff3f;
+}
+
+#navbarSupportedContent ul li a {
+  color: white;
+}
+
+#navbarSupportedContent ul li a {
+  color: black;
+}
+
+.dropdown-item {
+  color: #007f5f;
+}
+
 .fondo_contenido {
-  background-color: #D3E1E4;
+  background-color: #80b918;
 }
 
 .fondo_footer {
-  background-color: #00517A;
+  background-color: #2b9348;
   padding: 15px;
   color: white;
 }

@@ -15,18 +15,17 @@
     margin: 0px 0 0 0;
 }
 .panel nav .selected_li_button button{
-    color: $color2;
+    color: white;
     font-weight: bold;
     padding: 10px 10px 10px 10px;
-    border-bottom: 2px solid $color2;
-    border-radius: 2px;
+    border-bottom: 2px solid $color4;
 }
 
 .panel nav .selected_li_button button:hover{
-    background-color: #eeeeee;
+    background-color: $color3;
     text-decoration: none;
 }
 
 .active{
-    background-color: #eeeeee;
+    background-color: $color3;
 }
