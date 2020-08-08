@@ -81,7 +81,7 @@
 
             <div class="content">
             <img src="https://joseantoniosaiz.com/wp-content/uploads/2013/05/linechart.png" alt="">
-                <h1>Vibrados Navarrete</h1>
+                <h1>Sistemad de stock y ventas</h1>
             </div>
         </div>
     </body>
