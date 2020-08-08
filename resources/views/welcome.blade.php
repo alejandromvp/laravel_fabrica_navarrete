@@ -44,7 +44,7 @@
 
             .content {
                 text-align: center;
-                color:#0466c8;  
+                color:white;  
             }
 
             .title {
@@ -104,7 +104,7 @@
                 @endif
 
                 <div class="content">
-                    <h1>Sistemad de stock y ventas</h1>
+                    <h1>Sistema de stock y ventas</h1>
                 </div>
             </div>
         </div>

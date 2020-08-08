@@ -38505,7 +38505,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-sm-12 text-center" }, [
               _vm._v(
-                "\n                        © 2020 Vibrados Navarrete \n                    "
+                "\n                        © 2020 Alejandro Villagran\n                    "
               )
             ])
           ])

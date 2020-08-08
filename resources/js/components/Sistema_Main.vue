@@ -33,7 +33,7 @@
                 <footer class="fondo_footer"> 
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            © 2020 Vibrados Navarrete 
+                            © 2020 Alejandro Villagran
                         </div>
                     </div>  
                 </footer>
