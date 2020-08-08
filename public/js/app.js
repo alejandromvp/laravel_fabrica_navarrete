@@ -38630,7 +38630,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-sm-6" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "card-header bg-primary" }, [
             _vm._v("\n                    AGREGAR CATEGORIA\n                ")
           ]),
           _vm._v(" "),
@@ -38685,7 +38685,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-sm-6" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "card-header bg-primary" }, [
             _vm._v(
               "\n                    LISTA DE CATEGORIAS\n                "
             )

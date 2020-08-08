@@ -6,6 +6,17 @@ $color3: #51C6D9;
 $color4: #D3E1E4;
 $color5: #DDE8EA; */
 
+/* $color1: #007f5f;
+$color2: #2b9348;
+$color3: #55a630;
+$color4: #80b918;
+$color5: #aacc00;
+$color6: #bfd200;
+$color7: #d4d700;
+$color8: #dddf00;
+$color9: #eeef20;
+$color10: #ffff3f; */
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10935,7 +10946,7 @@ a.text-dark:focus {
 }
 
 .fondo_panel {
-  background-color: #007f5f;
+  background-color: #0466c8;
 }
 
 .flex_column_center {
@@ -10954,20 +10965,20 @@ a.text-dark:focus {
   color: white;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
-  border-bottom: 2px solid #80b918;
+  border-bottom: 2px solid #002855;
 }
 
 .panel nav .selected_li_button button:hover {
-  background-color: #55a630;
+  background-color: #023e7d;
   text-decoration: none;
 }
 
 .active {
-  background-color: #55a630;
+  background-color: #023e7d;
 }
 
 .navbar_color {
-  background-color: #2b9348;
+  background-color: #0353a4;
 }
 
 .navbar_color .container .navbar-brand {
@@ -10979,11 +10990,11 @@ a.text-dark:focus {
 }
 
 .cerrar_sesion {
-  background-color: #bfd200;
+  background-color: #023e7d;
 }
 
 .cerrar_sesion a:hover {
-  background-color: #ffff3f;
+  background-color: #0466c8;
 }
 
 #navbarSupportedContent ul li a {
@@ -10991,15 +11002,15 @@ a.text-dark:focus {
 }
 
 #navbarSupportedContent ul li a {
-  color: black;
+  color: white;
 }
 
 .dropdown-item {
-  color: #007f5f;
+  color: #0466c8;
 }
 
 .fondo_contenido {
-  background-color: #80b918;
+  background-color: #002855;
   min-height: 900px;
 }
 
@@ -11009,7 +11020,7 @@ a.text-dark:focus {
 }
 
 .fondo_footer {
-  background-color: #2b9348;
+  background-color: #0353a4;
   padding: 15px;
   color: white;
 }

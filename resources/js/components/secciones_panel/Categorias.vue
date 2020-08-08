@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary">
                         AGREGAR CATEGORIA
                     </div>
                     <div class="card-body">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary">
                         LISTA DE CATEGORIAS
                     </div>
                     <div class="card-body">
