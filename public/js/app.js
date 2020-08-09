@@ -38520,7 +38520,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "Main" }, [
+  return _c("div", { staticClass: "Main_sistema" }, [
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
@@ -38532,7 +38532,7 @@ var render = function() {
       _c("div", { staticClass: "col-sm-10 fondo_contenido" }, [
         _c(
           "div",
-          { staticClass: "p-2", staticStyle: { height: "540px" } },
+          { staticClass: "p-2" },
           [
             _vm.menu_active[0] ? _c("panel-control") : _vm._e(),
             _vm._v(" "),

@@ -11,13 +11,13 @@
             </pensamiento-component>
         </div>
     </div> -->
-    <div class="Main">
+    <div class="Main_sistema">
         <div class="row">
             <div class="col-sm-2 fondo_panel p-0">
                 <panel-left-main @active_menu="fondo_contenido"></panel-left-main>
             </div>
             <div class="col-sm-10 fondo_contenido">
-                <div class="p-2" style="height:540px;">
+                <div class="p-2">
                     <panel-control v-if="menu_active[0]"></panel-control>
                     <component-accesos v-if="menu_active[1]"></component-accesos>
                     <seccion-categoria v-if="menu_active[2]"></seccion-categoria>

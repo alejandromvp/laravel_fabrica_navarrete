@@ -11009,14 +11009,20 @@ a.text-dark:focus {
   color: #0466c8;
 }
 
+.table th,
+.table td {
+  padding: 0.5rem;
+}
+
 .fondo_contenido {
   background-color: #002855;
   min-height: 900px;
 }
 
-.table th,
-.table td {
-  padding: 0.5rem;
+.Main_sistema {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .fondo_footer {

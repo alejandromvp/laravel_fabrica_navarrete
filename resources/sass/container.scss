@@ -27,11 +27,18 @@
 .dropdown-item{
     color:$color1;
 }
+
+.table th, .table td {
+    padding: 0.5rem;
+}
+
+// CSS MAIN SISTEMA (DENTRO DEL SISTEMA CON PANEL Y CONTAINER DERECHO)
 .fondo_contenido{
     background-color: $color4;
     min-height: 900px;
 }
-
-.table th, .table td {
-    padding: 0.5rem;
+.Main_sistema{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
