@@ -2015,7 +2015,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onClickControl_Panel: function onClickControl_Panel() {
       console.log("seccion categorias");
-      this.class_active[0] = ['active'];
+      this.class_active = ['active', '', '', '', '', '', ''];
       this.$emit('active_menu', 0);
     },
     onClickAccesos: function onClickAccesos() {
@@ -2355,35 +2355,97 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: [],
   data: function data() {
     return {
-      categoria: '',
-      array_categorias: []
+      new_input_categoria: '',
+      array_categorias: [],
+      editmode: false,
+      form: {
+        id: '',
+        categoria: '',
+        index: '',
+        created_at: '',
+        updated_at: ''
+      }
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log('Component mounted.');
     axios.get('/categorias').then(function (response) {
       _this.array_categorias = response.data;
     });
   },
   methods: {
-    onClickAddCategorias: function onClickAddCategorias() {
+    Modal_edit_categoria: function Modal_edit_categoria(_categoria, _index) {
+      this.editmode = true;
+      this.form.id = _categoria.id;
+      this.form.categoria = _categoria.descripcion;
+      this.new_input_categoria = _categoria.descripcion;
+      this.form.index = _index;
+      $('#edit_new_categoria_modal').modal('show');
+    },
+    Modal_new_categoria: function Modal_new_categoria() {
+      this.editmode = false;
+      this.form.id = '';
+      this.form.categoria = '';
+      this.new_input_categoria = '';
+      $('#edit_new_categoria_modal').modal('show');
+    },
+    updateCategoria: function updateCategoria() {
       var _this2 = this;
 
       var params = {
-        descripcion: this.categoria
+        descripcion: this.new_input_categoria
       };
-      this.categoria = '';
+      this.new_input_categoria = '';
+      axios.put("/categorias/".concat(this.form.id), params).then(function (response) {
+        _this2.array_categorias.splice(_this2.form.index, 1, response.data);
+
+        console.log(response.data);
+      });
+      $('#edit_new_categoria_modal').modal('hide');
+    },
+    AddCategorias: function AddCategorias() {
+      var _this3 = this;
+
+      var params = {
+        descripcion: this.new_input_categoria
+      };
+      this.new_input_categoria = '';
       axios.post('/categorias', params).then(function (response) {
         console.log("categoria agregada");
 
-        _this2.array_categorias.push(response.data);
+        _this3.array_categorias.unshift(response.data);
+      });
+      $('#edit_new_categoria_modal').modal('hide');
+    },
+    onClickDelete: function onClickDelete(id, index) {
+      var _this4 = this;
+
+      axios["delete"]("/categorias/".concat(id)).then(function () {
+        _this4.$emit('delete');
+
+        _this4.array_categorias.splice(index, 1);
       });
     }
   }
@@ -38628,67 +38690,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "Main_Categorias" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-6" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header bg-primary" }, [
-            _vm._v("\n                    AGREGAR CATEGORIA\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "form",
-              {
-                attrs: { action: "" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.onClickAddCategorias()
-                  }
-                }
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.categoria,
-                      expression: "categoria"
-                    }
-                  ],
-                  staticClass: "form-control mb-3",
-                  attrs: {
-                    type: "text",
-                    placeholder: "Nombre de la categoria"
-                  },
-                  domProps: { value: _vm.categoria },
+          _c("div", { staticClass: "card-header bg-secondary" }, [
+            _c("div", { staticClass: "flex_row" }, [
+              _c("b", { staticClass: "text-white" }, [
+                _vm._v("LISTA DE CATEGORIAS")
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
                   on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.categoria = $event.target.value
+                    click: function($event) {
+                      return _vm.Modal_new_categoria()
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("Agregar categoria")]
-                )
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-6" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header bg-primary" }, [
-            _vm._v(
-              "\n                    LISTA DE CATEGORIAS\n                "
-            )
+                },
+                [_vm._v("Agregar Categoria")]
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -38697,15 +38719,43 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.array_categorias, function(item) {
-                  return _c("tr", { key: item.id }, [
-                    _c("th", { domProps: { textContent: _vm._s(item.id) } }),
-                    _vm._v(" "),
+                _vm._l(_vm.array_categorias, function(categoria, index) {
+                  return _c("tr", { key: categoria.id }, [
                     _c("th", {
-                      domProps: { textContent: _vm._s(item.descripcion) }
+                      domProps: { textContent: _vm._s(categoria.id) }
                     }),
                     _vm._v(" "),
-                    _vm._m(1, true)
+                    _c("th", {
+                      domProps: { textContent: _vm._s(categoria.descripcion) }
+                    }),
+                    _vm._v(" "),
+                    _c("th", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info",
+                          on: {
+                            click: function($event) {
+                              return _vm.Modal_edit_categoria(categoria, index)
+                            }
+                          }
+                        },
+                        [_vm._v("Editar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDelete(_vm.item.id, index)
+                            }
+                          }
+                        },
+                        [_vm._v("Eliminar")]
+                      )
+                    ])
                   ])
                 }),
                 0
@@ -38714,7 +38764,163 @@ var render = function() {
           ])
         ])
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "edit_new_categoria_modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "addNewLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.editmode,
+                        expression: "!editmode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "addNewLabel" }
+                  },
+                  [_vm._v("Agregar Nueva Categoria")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "h5",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.editmode,
+                        expression: "editmode"
+                      }
+                    ],
+                    staticClass: "modal-title",
+                    attrs: { id: "addNewLabel" }
+                  },
+                  [
+                    _vm._v("Actualizar categoria: "),
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v(_vm._s(_vm.form.categoria))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      _vm.editmode ? _vm.updateCategoria() : _vm.AddCategorias()
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_input_categoria,
+                            expression: "new_input_categoria"
+                          }
+                        ],
+                        staticClass: "form-control mb-3",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Nombre de la categoria"
+                        },
+                        domProps: { value: _vm.new_input_categoria },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.new_input_categoria = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.editmode,
+                            expression: "editmode"
+                          }
+                        ],
+                        staticClass: "btn btn-success",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Actualizar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.editmode,
+                            expression: "!editmode"
+                          }
+                        ],
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" }
+                      },
+                      [_vm._v("Agregar categoria")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -38722,7 +38928,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
+    return _c("thead", { staticClass: "bg-light" }, [
       _c("tr", [
         _c("th", [_vm._v("Codigo")]),
         _vm._v(" "),
@@ -38736,11 +38942,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("th", [
-      _c("button", { staticClass: "btn btn-info" }, [_vm._v("Editar")]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Eliminar")])
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

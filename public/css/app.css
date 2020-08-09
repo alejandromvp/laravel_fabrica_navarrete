@@ -11033,3 +11033,10 @@ h1 {
   color: white;
 }
 
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+

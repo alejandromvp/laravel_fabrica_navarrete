@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Seccion_panel\Categoria;
 use DB;
+use Carbon\Carbon;
 
 class CategoriaController extends Controller
 {
@@ -41,6 +42,7 @@ class CategoriaController extends Controller
     {
         $categorias = new Categoria();
         $categorias->descripcion = $request->descripcion;
+        $categorias->created_at = Carbon::now();
         $categorias->save();
 
         return $categorias;
@@ -77,7 +79,11 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->descripcion = $request->descripcion;
+        $categoria->updated_at = Carbon::now();
+        $categoria->save();
+        return $categoria;
     }
 
     /**
@@ -88,6 +94,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
     }
 }

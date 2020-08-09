@@ -45,7 +45,7 @@
         methods: {
             onClickControl_Panel(){
                 console.log("seccion categorias");
-                this.class_active[0] = ['active']
+                 this.class_active = ['active','', '', '', '', '', ''];
                 this.$emit('active_menu', 0);
             },
             onClickAccesos(){

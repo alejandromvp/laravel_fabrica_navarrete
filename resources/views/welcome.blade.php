@@ -45,6 +45,9 @@
             .content {
                 text-align: center;
                 color:white;  
+                background: #0353a4;
+                opacity: 0.6;
+                padding: 5px 50px;
             }
 
             .title {
