@@ -25,7 +25,7 @@
                                     <th v-text="categoria.descripcion"></th>
                                     <th>
                                         <button class="btn btn-info" v-on:click="Modal_edit_categoria(categoria, index)">Editar</button>
-                                        <button class="btn btn-danger" v-on:click="onClickDelete(item.id, index)">Eliminar</button>
+                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id, index)">Eliminar</button>
                                     </th>
                                 </tr>
                             </tbody>
@@ -120,15 +120,14 @@
                 };
                 this.new_input_categoria = ''; 
                  axios.post('/categorias', params).then((response) => {
-                     console.log("categoria agregada");
                      this.array_categorias.unshift(response.data);
                 });
                 $('#edit_new_categoria_modal').modal('hide');
             },
-            onClickDelete(id, index){
-                    axios.delete(`/categorias/${id}`).then(() => {
+            onClickDelete(_id, _index){
+                    axios.delete(`/categorias/${_id}`).then(() => {
                     this.$emit('delete');
-                    this.array_categorias.splice(index, 1);
+                    this.array_categorias.splice(_index, 1);
                 });
             }
         }
