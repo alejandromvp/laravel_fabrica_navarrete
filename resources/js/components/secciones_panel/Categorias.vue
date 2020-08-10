@@ -25,7 +25,7 @@
                                     <th v-text="categoria.descripcion"></th>
                                     <th>
                                         <button class="btn btn-info" v-on:click="Modal_edit_categoria(categoria, index)">Editar</button>
-                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id, index)">Eliminar</button>
+                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id, index, categoria.descripcion)">Eliminar</button>
                                     </th>
                                 </tr>
                             </tbody>
@@ -89,9 +89,9 @@
         methods: {
             Modal_edit_categoria(_categoria, _index){
                 this.editmode = true;
+                this.new_input_categoria = _categoria.descripcion;
                 this.form.id = _categoria.id;
                 this.form.categoria = _categoria.descripcion;
-                this.new_input_categoria = _categoria.descripcion;
                 this.form.index = _index;
                 $('#edit_new_categoria_modal').modal('show');
                 
@@ -113,6 +113,7 @@
                     console.log(response.data);
                 });
                 $('#edit_new_categoria_modal').modal('hide');
+                Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
             },
             AddCategorias(){
                 const params = {
@@ -123,13 +124,31 @@
                      this.array_categorias.unshift(response.data);
                 });
                 $('#edit_new_categoria_modal').modal('hide');
+                Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
             },
-            onClickDelete(_id, _index){
-                    axios.delete(`/categorias/${_id}`).then(() => {
-                    this.$emit('delete');
-                    this.array_categorias.splice(_index, 1);
-                });
-            }
+            onClickDelete(_id, _index, _descripcion){
+                Swal.fire({
+                    title: 'Seguro que deseas eliminar categoria: '+_descripcion,
+                    text: "No podras revertir esta acción!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Eliminar!'
+                    }).then((result) => {
+                    if (result.value) {
+                        axios.delete(`/categorias/${_id}`).then(() => {
+                                this.$emit('delete');
+                                this.array_categorias.splice(_index, 1);
+                            });
+                        Swal.fire(
+                        'Eliminado!',
+                        'La categoria: '+_descripcion+' ha sido eliminada exitosamente',
+                        'success'
+                        )
+                    }
+                })
+            } //fin funcion delete
         }
     }
 </script>
