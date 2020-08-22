@@ -8,7 +8,11 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    text-align: center; 
+    text-align: left; 
+}
+
+.flex_column_center  button{
+    text-align: left;
 }
 
 .panel{

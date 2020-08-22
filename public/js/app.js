@@ -1999,6 +1999,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: [],
@@ -38303,7 +38317,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Panel de control\n            ")]
+          [_vm._m(0), _vm._v("Panel de control\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38316,7 +38330,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Accesos\n            ")]
+          [_vm._m(1), _vm._v("Accesos\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38329,7 +38343,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Categorias\n            ")]
+          [_vm._m(2), _vm._v("Categorias \n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38342,7 +38356,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Productos\n            ")]
+          [_vm._m(3), _vm._v("Productos  \n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38355,7 +38369,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Multimedia\n            ")]
+          [_vm._m(4), _vm._v("Multimedia\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38368,7 +38382,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Ventas\n            ")]
+          [_vm._m(5), _vm._v("Ventas\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -38381,13 +38395,70 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n                Reporte de ventas\n            ")]
+          [_vm._m(6), _vm._v("Reporte de ventas\n            ")]
         )
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticStyle: { "margin-right": "10px" } }, [
+      _c("i", { staticClass: "fas fa-list" })
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -3,25 +3,39 @@
         <nav style="width: inherit;">
             <li class="flex_column_center selected_li_button">
                 <button v-bind:class="[boton_style, class_active[0]]" v-on:click="onClickControl_Panel()">
-                    Panel de control
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Panel de control
                 </button>
                 <button v-bind:class="[boton_style, class_active[1]]" v-on:click="onClickAccesos()">
-                    Accesos
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Accesos
                 </button>
                 <button v-bind:class="[boton_style, class_active[2]]" v-on:click="onClickCategorias()">
-                    Categorias
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Categorias 
                 </button>
                 <button v-bind:class="[boton_style, class_active[3]]" v-on:click="onClickProductos()">
-                    Productos
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Productos  
                 </button>
                 <button v-bind:class="[boton_style, class_active[4]]" v-on:click="onClickMultimedia()">
-                    Multimedia
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Multimedia
                 </button>
                 <button v-bind:class="[boton_style, class_active[5]]" v-on:click="onClickVentas()">
-                    Ventas
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Ventas
                 </button>
                 <button v-bind:class="[boton_style, class_active[6]]" v-on:click="onClickReporte_Ventas()">
-                    Reporte de ventas
+                    <span style="margin-right:10px;">
+                        <i class="fas fa-list"></i>
+                    </span>Reporte de ventas
                 </button>
             </li>
         </nav>
