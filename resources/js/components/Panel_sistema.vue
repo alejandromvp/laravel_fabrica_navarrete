@@ -1,6 +1,16 @@
 <template>
     <div class="panel">
         <nav style="width: inherit;">
+            <div class="perfil">
+                <div class="flex_row_perfil">
+                    <img v-bind:src="'img/profile/'+[user_icon]" class="rounded-circle" alt="Cinque Terre" width="50" height="50"> 
+                    <div class="usuario_perfil">
+                        <p style="color:#001845;margin-bottom:0px;">{{user}}</p>
+                        <p style="color:#979dac;margin-bottom:0px;">Administrador</p>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top:0;margin-bottom:0;">
             <li class="flex_column_center selected_li_button">
                 <button v-bind:class="[boton_style, class_active[0]]" v-on:click="onClickControl_Panel()">
                     <span style="margin-right:10px;">
@@ -45,7 +55,7 @@
 <script>
     export default {
         //props se usa cuando se obtiene info(array) de forma externa
-        props: [],
+        props: ['user', 'user_icon'],
         data(){
             return{
                 boton_style: 'btn btn-default',
@@ -54,7 +64,6 @@
             };
         },
         mounted() {
-            console.log('panel m0ntado') 
         },
         methods: {
             onClickControl_Panel(){

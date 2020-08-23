@@ -15,6 +15,12 @@
     text-align: left;
 }
 
+.flex_row_perfil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .panel{
     margin: 0px 0 0 0;
 }
@@ -32,4 +38,18 @@
 
 .active{
     background-color: $color3;
+}
+
+.perfil{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.usuario_perfil{
+    margin-left:15px;
+    text-align: left;
+    display:flex;
+    flex-direction: column;
+    font-weight: bold;
 }

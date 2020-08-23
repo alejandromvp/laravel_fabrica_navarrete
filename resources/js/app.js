@@ -28,6 +28,7 @@ Vue.component('form-pensamiento', require('./components/Form_pensamiento.vue').d
 Vue.component('panel-left-main', require('./components/Panel_sistema.vue').default);
 
 //################### secciones Panel Menu ###################################################
+Vue.component('bienvenida-vue', require('./components/secciones_panel/Bienvenida.vue').default);
 Vue.component('panel-control', require('./components/secciones_panel/Panel_control.vue').default);
 Vue.component('component-accesos', require('./components/secciones_panel/Accesos.vue').default);
 Vue.component('seccion-categoria', require('./components/secciones_panel/Categorias.vue').default);

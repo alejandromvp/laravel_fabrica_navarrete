@@ -16,7 +16,9 @@
 @import 'sweet_alert2.scss';
 
 //scss secciones panel
+@import 'secciones_panel/Bienvenida';
 @import 'secciones_panel/Categorias';
+@import 'secciones_panel/Panel_control.scss';
 
 //fontawesome
 $fa-font-path: "../webfonts";
