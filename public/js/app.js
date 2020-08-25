@@ -2630,6 +2630,91 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: [],
@@ -39300,56 +39385,177 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "Main" }, [
-      _c("div", { staticClass: "section_1" }, [
-        _c("div", { staticClass: "box_users" }, [
-          _c("div", { staticClass: "row_flex" }, [
-            _c("div", { staticClass: "seccion_icono" }, [
-              _c("i", { staticClass: "fas fa-list" })
+      _c("div", { staticClass: "panel_control_gred_1" }, [
+        _c("div", { staticStyle: { "background-color": "#A3C86D" } }, [
+          _c("div", { staticClass: "gred1_content" }, [
+            _c("div", { staticClass: "item1_grid" }, [
+              _c(
+                "span",
+                { staticStyle: { "font-size": "48px", color: "white" } },
+                [_c("i", { staticClass: "fas fa-user" })]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "seccion_box_content" }, [
-              _vm._v("\n                    Usuarios\n                    "),
-              _c("span", [_vm._v("3")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box_category" }, [
-          _c("div", { staticClass: "row_flex" }, [
-            _c("div", { staticClass: "seccion_icono" }, [
-              _c("i", { staticClass: "fas fa-list" })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "seccion_box_content" }, [
-              _c("p", [_vm._v("Categorias")]),
+            _c("div", { staticClass: "item2_grid" }, [
+              _c("b", [_vm._v("4")]),
               _vm._v(" "),
-              _c("span", [_vm._v("1")])
+              _c("b", [_vm._v("Usuarios")])
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "box_productos" }, [
-          _c("div", { staticClass: "row_flex" }, [
-            _c("div", { staticClass: "seccion_icono" }, [
-              _c("i", { staticClass: "fas fa-list" })
+        _c("div", { staticStyle: { "background-color": "#FF7857" } }, [
+          _c("div", { staticClass: "gred1_content" }, [
+            _c("div", { staticClass: "item1_grid" }, [
+              _c(
+                "span",
+                { staticStyle: { "font-size": "48px", color: "white" } },
+                [_c("i", { staticClass: "fas fa-list" })]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "seccion_box_content" }, [
-              _vm._v("\n                    Productos\n                    "),
-              _c("span", [_vm._v("0")])
+            _c("div", { staticClass: "item2_grid" }, [
+              _c("b", [_vm._v("4")]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Categorias")])
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "box_ventas" }, [
-          _c("div", { staticClass: "row_flex" }, [
-            _c("div", { staticClass: "seccion_icono" }, [
-              _c("i", { staticClass: "fas fa-list" })
+        _c("div", { staticStyle: { "background-color": "#7ACBEE" } }, [
+          _c("div", { staticClass: "gred1_content" }, [
+            _c("div", { staticClass: "item1_grid" }, [
+              _c(
+                "span",
+                { staticStyle: { "font-size": "48px", color: "white" } },
+                [_c("i", { staticClass: "fas fa-shopping-cart" })]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "seccion_box_content" }, [
-              _vm._v("\n                    Ventas\n                    "),
-              _c("span", [_vm._v("0")])
+            _c("div", { staticClass: "item2_grid" }, [
+              _c("b", [_vm._v("3")]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Productos")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { "background-color": "#FDD761" } }, [
+          _c("div", { staticClass: "gred1_content" }, [
+            _c("div", { staticClass: "item1_grid" }, [
+              _c(
+                "span",
+                { staticStyle: { "font-size": "48px", color: "white" } },
+                [_c("i", { staticClass: "fas fa-dollar-sign" })]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "item2_grid" }, [
+              _c("b", [_vm._v("7")]),
+              _vm._v(" "),
+              _c("b", [_vm._v("Ventas")])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel_control_gred_2" }, [
+        _c("div", { staticClass: "table1" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header bg-secondary" }, [
+              _c("b", { staticClass: "text-white" }, [
+                _vm._v("PRODUCTOS MAS VENDIDOS")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Total vendido")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Cantidad total")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Pandereta")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("29")])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "table1" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header bg-secondary" }, [
+              _c("b", { staticClass: "text-white" }, [_vm._v("ULTIMAS VENTAS")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Producto")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Fecha")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Venta total")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Pandereta")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("29")])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "table1" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header bg-secondary" }, [
+              _c("b", { staticClass: "text-white" }, [
+                _vm._v("PRODUCTO RECIENTEMENTE AÑADIDOS")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Titulo")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Total vendido")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Cantidad total")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Pandereta")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("29")])
+                  ])
+                ])
+              ])
             ])
           ])
         ])
