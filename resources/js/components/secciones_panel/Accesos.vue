@@ -1,6 +1,79 @@
 <template>
-    <div class="Main">
-        <h1>Accesos</h1>
+    <div class="Accesos">
+        <div class="card">
+            <div class="card-header ">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#tab1">Administrar usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#tab2">Administrar grupos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="bg-info">
+                                    <th>Nombre</th>
+                                    <th>Rol de usuario</th>
+                                    <th>Estado</th>
+                                    <th>Ultimo ingreso</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Alejandro Villagran</td>
+                                    <td>Administrador</td>
+                                    <td> <b class="estado_activo">Activo</b></td>
+                                    <td>25/08/2020 4:43:20 pm</td>
+                                    <td>
+                                        <button class="btn btn-warning">Editar</button>
+                                        <button class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Camilo Silva</td>
+                                    <td>Administrador</td>
+                                    <td> <b class="estado_activo">Activo</b></td>
+                                    <td>25/08/2020 4:43:20 pm</td>
+                                    <td>
+                                        <button class="btn btn-warning">Editar</button>
+                                        <button class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="tab2">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nombre del grupo</th>
+                                    <th>Nivel del grupo</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Administrador</td>
+                                    <td>1</td>
+                                    <td> <b class="estado_activo">Activo</b></td>
+                                    <td>
+                                        <button class="btn btn-warning">Editar</button>
+                                        <button class="btn btn-danger">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

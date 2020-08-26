@@ -2305,6 +2305,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   //props se usa cuando se obtiene info(array) de forma externa
   props: [],
@@ -2740,6 +2813,70 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38625,7 +38762,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticStyle: { "margin-right": "10px" } }, [
-      _c("i", { staticClass: "fas fa-list" })
+      _c("i", { staticClass: "fas fa-home" })
     ])
   },
   function() {
@@ -38633,7 +38770,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticStyle: { "margin-right": "10px" } }, [
-      _c("i", { staticClass: "fas fa-list" })
+      _c("i", { staticClass: "fas fa-user" })
     ])
   },
   function() {
@@ -38641,7 +38778,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticStyle: { "margin-right": "10px" } }, [
-      _c("i", { staticClass: "fas fa-list" })
+      _c("i", { staticClass: "fab fa-buffer" })
     ])
   },
   function() {
@@ -38649,7 +38786,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticStyle: { "margin-right": "10px" } }, [
-      _c("i", { staticClass: "fas fa-list" })
+      _c("i", { staticClass: "fas fa-border-all" })
     ])
   },
   function() {
@@ -38974,7 +39111,151 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Main" }, [_c("h1", [_vm._v("Accesos")])])
+    return _c("div", { staticClass: "Accesos" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header " }, [
+          _c("ul", { staticClass: "nav nav-tabs" }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link active",
+                  attrs: { "data-toggle": "tab", href: "#tab1" }
+                },
+                [_vm._v("Administrar usuarios")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  attrs: { "data-toggle": "tab", href: "#tab2" }
+                },
+                [_vm._v("Administrar grupos")]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "tab-content" }, [
+            _c(
+              "div",
+              { staticClass: "tab-pane active", attrs: { id: "tab1" } },
+              [
+                _c("table", { staticClass: "table table-bordered" }, [
+                  _c("thead", [
+                    _c("tr", { staticClass: "bg-info" }, [
+                      _c("th", [_vm._v("Nombre")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Rol de usuario")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Estado")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Ultimo ingreso")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Acciones")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v("Alejandro Villagran")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("Administrador")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("b", { staticClass: "estado_activo" }, [
+                          _vm._v("Activo")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("25/08/2020 4:43:20 pm")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("button", { staticClass: "btn btn-warning" }, [
+                          _vm._v("Editar")
+                        ]),
+                        _vm._v(" "),
+                        _c("button", { staticClass: "btn btn-danger" }, [
+                          _vm._v("Eliminar")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Camilo Silva")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("Administrador")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("b", { staticClass: "estado_activo" }, [
+                          _vm._v("Activo")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("25/08/2020 4:43:20 pm")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("button", { staticClass: "btn btn-warning" }, [
+                          _vm._v("Editar")
+                        ]),
+                        _vm._v(" "),
+                        _c("button", { staticClass: "btn btn-danger" }, [
+                          _vm._v("Eliminar")
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "tab-pane fade", attrs: { id: "tab2" } }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("Nombre del grupo")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Nivel del grupo")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Estado")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Acciones")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Administrador")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("b", { staticClass: "estado_activo" }, [
+                        _vm._v("Activo")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("button", { staticClass: "btn btn-warning" }, [
+                        _vm._v("Editar")
+                      ]),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-danger" }, [
+                        _vm._v("Eliminar")
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -39584,14 +39865,147 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "Main" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header bg-secondary" }, [
+            _c("div", { staticClass: "flex_row" }, [
+              _c("b", { staticClass: "text-white" }, [
+                _vm._v("LISTA DE PRODUCTOS")
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  on: {
+                    click: function($event) {
+                      return _vm.Modal_new_categoria()
+                    }
+                  }
+                },
+                [_vm._v("Agregar Producto")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "Main" }, [_c("h1", [_vm._v("Productos")])])
+    return _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticStyle: { "overflow-x": "auto" } }, [
+        _c("table", { staticClass: "table table-bordered" }, [
+          _c("thead", { staticClass: "bg-light" }, [
+            _c("tr", [
+              _c("th", [_vm._v("Codigo")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Imagen")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Descripción")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Categoria")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Stock")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Precio de compra")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Precio de venta")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Agregado")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Acciones")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_vm._v("1")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "http://vibradosnavarrete.cl/wp-content/uploads/2019/09/bloque-curvo-768x1024.jpg",
+                    alt: "",
+                    width: "80",
+                    height: "70"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Bloque curvo")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Bloques")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("100")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("15.000 CLP")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("21.000 CLP")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("25-08-2020 9:10:54 am")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("button", { staticClass: "btn btn-warning" }, [
+                  _vm._v("Editar")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-danger" }, [
+                  _vm._v("Eliminar")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_vm._v("1")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("img", {
+                  attrs: {
+                    src:
+                      "http://vibradosnavarrete.cl/wp-content/uploads/2019/09/placa-humita-1024x303.jpg",
+                    alt: "",
+                    width: "80",
+                    height: "70"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Placa Humita")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("Panderetas")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("100")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("15.000 CLP")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("21.000 CLP")]),
+              _vm._v(" "),
+              _c("td", [_vm._v("25-08-2020 9:10:54 am")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("button", { staticClass: "btn btn-warning" }, [
+                  _vm._v("Editar")
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-danger" }, [
+                  _vm._v("Eliminar")
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true

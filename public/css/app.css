@@ -12990,6 +12990,21 @@ h1 {
   }
 }
 
+.tab-content .active {
+  background-color: white;
+}
+
+.estado_activo {
+  background-color: #28A745;
+  color: white;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.Accesos .nav-item a {
+  color: #495057;
+}
+
 /*!
  * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

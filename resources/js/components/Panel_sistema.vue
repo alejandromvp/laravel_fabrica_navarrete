@@ -14,22 +14,22 @@
             <li class="flex_column_center selected_li_button">
                 <button v-bind:class="[boton_style, class_active[0]]" v-on:click="onClickControl_Panel()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-home"></i>
                     </span>Panel de control
                 </button>
                 <button v-bind:class="[boton_style, class_active[1]]" v-on:click="onClickAccesos()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-user"></i>
                     </span>Accesos
                 </button>
                 <button v-bind:class="[boton_style, class_active[2]]" v-on:click="onClickCategorias()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fab fa-buffer"></i>
                     </span>Categorias 
                 </button>
                 <button v-bind:class="[boton_style, class_active[3]]" v-on:click="onClickProductos()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-border-all"></i>
                     </span>Productos  
                 </button>
                 <button v-bind:class="[boton_style, class_active[4]]" v-on:click="onClickMultimedia()">
