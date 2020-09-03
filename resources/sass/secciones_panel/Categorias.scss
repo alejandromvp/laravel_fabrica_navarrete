@@ -1,6 +1,13 @@
 .Main_Categorias{
-    font-size: 12px;
+    background-color: $color9;
+    padding: 20px;
+    border-radius: 10px;
 }
+
+.Main_Categorias .card-header{
+    background-color:$color7;
+}
+
 h1{
     color:white;
 }

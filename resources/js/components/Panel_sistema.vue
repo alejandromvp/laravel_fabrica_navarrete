@@ -34,17 +34,17 @@
                 </button>
                 <button v-bind:class="[boton_style, class_active[4]]" v-on:click="onClickMultimedia()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-photo-video"></i>
                     </span>Multimedia
                 </button>
                 <button v-bind:class="[boton_style, class_active[5]]" v-on:click="onClickVentas()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                         <i class="fas fa-dollar-sign"></i>
                     </span>Ventas
                 </button>
                 <button v-bind:class="[boton_style, class_active[6]]" v-on:click="onClickReporte_Ventas()">
                     <span style="margin-right:10px;">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-calculator"></i>
                     </span>Reporte de ventas
                 </button>
             </li>

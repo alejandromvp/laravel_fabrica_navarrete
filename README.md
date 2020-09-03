@@ -18,6 +18,7 @@ php artisan route:list
 php artisan make:controller Carpeta/NombreController --resource <br/>
 php artisan make:model Carpeta/NombreModel -m (-m es que se crea el archivo migracion) <br/>
 php artisan make:seeder NombreSeeder <br/>
+php artisan make:migration create_users_table <br/>
 php artisan migrate  <br/>
 php artisan db:seed <br/>
 

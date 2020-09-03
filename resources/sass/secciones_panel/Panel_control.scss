@@ -1,5 +1,13 @@
 
+.Main_panel_control{
+    background-color: $color9;
+    padding: 20px;
+    border-radius: 10px;
+}
 
+.Main_panel_control .card-header{
+    background-color:$color7;
+}
 
 .section_1{
     display: flex;

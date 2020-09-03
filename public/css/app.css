@@ -11040,7 +11040,7 @@ a.text-dark:focus {
 }
 
 .fondo_contenido {
-  background-color: #002855;
+  background-color: #33415c;
   min-height: 900px;
 }
 
@@ -12883,7 +12883,13 @@ p a:hover {
 }
 
 .Main_Categorias {
-  font-size: 12px;
+  background-color: #7d8597;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Main_Categorias .card-header {
+  background-color: #33415c;
 }
 
 h1 {
@@ -12895,6 +12901,26 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.Main_productos {
+  background-color: #7d8597;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Main_productos .card-header {
+  background-color: #33415c;
+}
+
+.Main_panel_control {
+  background-color: #7d8597;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Main_panel_control .card-header {
+  background-color: #33415c;
 }
 
 .section_1 {
@@ -12990,6 +13016,16 @@ h1 {
   }
 }
 
+.Main_Accesos {
+  background-color: #7d8597;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Main_Accesos .card-header {
+  background-color: #33415c;
+}
+
 .tab-content .active {
   background-color: white;
 }
@@ -13001,7 +13037,7 @@ h1 {
   padding: 2px;
 }
 
-.Accesos .nav-item a {
+.Main_Accesos .nav-item a {
   color: #495057;
 }
 

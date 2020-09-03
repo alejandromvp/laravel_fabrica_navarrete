@@ -1,5 +1,5 @@
 <template>
-    <div class="Main">
+    <div class="Main_panel_control">
         <div class="panel_control_gred_1">
             <div style="background-color: #A3C86D;">
                 <div class="gred1_content">
@@ -57,7 +57,7 @@
         <div class="panel_control_gred_2">
             <div class="table1">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header">
                             <b class="text-white">PRODUCTOS MAS VENDIDOS</b>
                     </div>
                     <div class="card-body">
@@ -82,7 +82,7 @@
             </div>
             <div class="table1">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header">
                             <b class="text-white">ULTIMAS VENTAS</b>
                     </div>
                     <div class="card-body">
@@ -107,7 +107,7 @@
             </div>
             <div class="table1">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header">
                             <b class="text-white">PRODUCTO RECIENTEMENTE AÑADIDOS</b>
                     </div>
                     <div class="card-body">

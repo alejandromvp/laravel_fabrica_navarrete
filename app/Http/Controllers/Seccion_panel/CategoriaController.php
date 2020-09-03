@@ -79,11 +79,13 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categoria = Categoria::find($id);
+        //$categoria = Categoria::find($id);
+        $categoria = Categoria::where('id_categoria', $id)->first();
         $categoria->descripcion = $request->descripcion;
         $categoria->updated_at = Carbon::now();
         $categoria->save();
         return $categoria;
+
     }
 
     /**

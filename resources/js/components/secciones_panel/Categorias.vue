@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header bg-secondary">
+                    <div class="card-header">
                         <div class="flex_row">
                             <b class="text-white">LISTA DE CATEGORIAS</b>
                             <button class="btn btn-success" v-on:click="Modal_new_categoria()">Agregar Categoria</button>
@@ -21,11 +21,11 @@
                             <tbody>
                                 <tr v-for="(categoria, index) in array_categorias"
                                 :key="categoria.id">
-                                    <th v-text="categoria.id"></th>
+                                    <th v-text="categoria.id_categoria"></th>
                                     <th v-text="categoria.descripcion"></th>
                                     <th>
-                                        <button class="btn btn-info" v-on:click="Modal_edit_categoria(categoria, index)">Editar</button>
-                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id, index, categoria.descripcion)">Eliminar</button>
+                                        <button class="btn btn-warning" v-on:click="Modal_edit_categoria(categoria, index)">Editar</button>
+                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id_categoria, index, categoria.descripcion)">Eliminar</button>
                                     </th>
                                 </tr>
                             </tbody>
@@ -73,9 +73,9 @@
                array_categorias: [],
                editmode:false,
                form:{
+                    index: '',
                     id:'',
                     categoria:'',
-                    index: '',
                     created_at:'',
                     updated_at:''
                 }
@@ -90,7 +90,7 @@
             Modal_edit_categoria(_categoria, _index){
                 this.editmode = true;
                 this.new_input_categoria = _categoria.descripcion;
-                this.form.id = _categoria.id;
+                this.form.id = _categoria.id_categoria;
                 this.form.categoria = _categoria.descripcion;
                 this.form.index = _index;
                 $('#edit_new_categoria_modal').modal('show');
@@ -110,10 +110,12 @@
                 this.new_input_categoria = ''; 
                 axios.put(`/categorias/${this.form.id}`, params).then((response) => {
                     this.array_categorias.splice(this.form.index, 1, response.data);
-                    console.log(response.data);
-                });
-                $('#edit_new_categoria_modal').modal('hide');
-                Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
+                    $('#edit_new_categoria_modal').modal('hide');
+                    Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
+                },
+                (error) => { console.log(error) }
+                
+                );
             },
             AddCategorias(){
                 const params = {
@@ -122,9 +124,11 @@
                 this.new_input_categoria = ''; 
                  axios.post('/categorias', params).then((response) => {
                      this.array_categorias.unshift(response.data);
-                });
-                $('#edit_new_categoria_modal').modal('hide');
-                Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
+                      $('#edit_new_categoria_modal').modal('hide');
+                      Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
+                    },
+                    (error) => { console.log(error) }
+                );
             },
             onClickDelete(_id, _index, _descripcion){
                 Swal.fire({

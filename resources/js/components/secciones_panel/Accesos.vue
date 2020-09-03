@@ -1,7 +1,7 @@
 <template>
-    <div class="Accesos">
+    <div class="Main_Accesos">
         <div class="card">
-            <div class="card-header ">
+            <div class="card-header bg-light">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tab1">Administrar usuarios</a>
@@ -12,16 +12,16 @@
                 </ul>
             </div>
             <div class="card-body">
-                <div class="tab-content">
+                <div class="tab-content ">
                     <div class="tab-pane active" id="tab1">
                         <table class="table table-bordered">
                             <thead>
-                                <tr class="bg-info">
-                                    <th>Nombre</th>
-                                    <th>Rol de usuario</th>
-                                    <th>Estado</th>
-                                    <th>Ultimo ingreso</th>
-                                    <th>Acciones</th>
+                                <tr class="bg-primary">
+                                    <th class="text-light">Nombre</th>
+                                    <th class="text-light">Rol de usuario</th>
+                                    <th class="text-light">Estado</th>
+                                    <th class="text-light">Ultimo ingreso</th>
+                                    <th class="text-light">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,11 +51,11 @@
                     <div class="tab-pane fade" id="tab2">
                         <table class="table table-bordered">
                             <thead>
-                                <tr>
-                                    <th>Nombre del grupo</th>
-                                    <th>Nivel del grupo</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
+                                <tr class="bg-primary">
+                                    <th class="text-light">Nombre del grupo</th>
+                                    <th class="text-light">Nivel del grupo</th>
+                                    <th class="text-light">Estado</th>
+                                    <th class="text-light">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
