@@ -29,6 +29,8 @@ sudo apt-get install nginx <br/>
 #wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - <br/>
 echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list <br/>
 sudo apt-get update <br/>
+sudo add-apt-repository ppa:ondrej/php<br/>
+sudo apt-get update<br/>
 sudo apt-get install php7.2 php7.2-fpm php7.2-cli php7.2-xml php7.2-mysql<br/>
 php -v se verifica si se instalo php, si se instalo apache hay que eliminarlo<br/>
 
