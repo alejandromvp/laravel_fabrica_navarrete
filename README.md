@@ -35,6 +35,7 @@ sudo apt-get install php7.2 php7.2-fpm php7.2-cli php7.2-xml php7.2-mysql<br/>
 php -v se verifica si se instalo php, si se instalo apache hay que eliminarlo<br/>
 
 //se instala composer<br/>
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-composer-on-ubuntu-20-04 <br/>
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"<br/>
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'e5325b19b381bfd88ce90a5ddb7823406b2a38cff6bb704b0acc289a09c8128d4a8ce2bbafcd1fcbdc38666422fe2806') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"<br/>
 php composer-setup.php<br/>
