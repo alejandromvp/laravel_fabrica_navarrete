@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" id="table_categorias">
                             <thead class="bg-light">
                                 <tr>
                                     <th>Codigo</th>
@@ -84,6 +84,7 @@
         mounted() {
             axios.get('/categorias').then((response) => {
                 this.array_categorias = response.data;
+                
             });
         },
         methods: {
@@ -155,6 +156,9 @@
             } //fin funcion delete
         }
     }
+    $(document).ready(function() {
+        $('#table_categorias').DataTable();
+    });
 </script>
 
 

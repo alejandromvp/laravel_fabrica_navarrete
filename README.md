@@ -86,5 +86,8 @@ sudo chown -R www-data: storage<br/>
 hay que agregarle contraseña al usuario root para que funcione los select de laravel
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
+# instalacion datatable
+https://yajrabox.com/docs/laravel-datatables/master/installation
+
 
 

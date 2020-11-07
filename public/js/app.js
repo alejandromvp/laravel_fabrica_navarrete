@@ -2612,6 +2612,9 @@ __webpack_require__.r(__webpack_exports__);
 
   }
 });
+$(document).ready(function () {
+  $('#table_categorias').DataTable();
+});
 
 /***/ }),
 
@@ -39482,57 +39485,69 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("table", { staticClass: "table table-bordered" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.array_categorias, function(categoria, index) {
-                  return _c("tr", { key: categoria.id }, [
-                    _c("th", {
-                      domProps: { textContent: _vm._s(categoria.id_categoria) }
-                    }),
-                    _vm._v(" "),
-                    _c("th", {
-                      domProps: { textContent: _vm._s(categoria.descripcion) }
-                    }),
-                    _vm._v(" "),
-                    _c("th", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-warning",
-                          on: {
-                            click: function($event) {
-                              return _vm.Modal_edit_categoria(categoria, index)
-                            }
-                          }
-                        },
-                        [_vm._v("Editar")]
-                      ),
+            _c(
+              "table",
+              {
+                staticClass: "table table-bordered",
+                attrs: { id: "table_categorias" }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.array_categorias, function(categoria, index) {
+                    return _c("tr", { key: categoria.id }, [
+                      _c("th", {
+                        domProps: {
+                          textContent: _vm._s(categoria.id_categoria)
+                        }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          on: {
-                            click: function($event) {
-                              return _vm.onClickDelete(
-                                categoria.id_categoria,
-                                index,
-                                categoria.descripcion
-                              )
+                      _c("th", {
+                        domProps: { textContent: _vm._s(categoria.descripcion) }
+                      }),
+                      _vm._v(" "),
+                      _c("th", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-warning",
+                            on: {
+                              click: function($event) {
+                                return _vm.Modal_edit_categoria(
+                                  categoria,
+                                  index
+                                )
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("Eliminar")]
-                      )
+                          },
+                          [_vm._v("Editar")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            on: {
+                              click: function($event) {
+                                return _vm.onClickDelete(
+                                  categoria.id_categoria,
+                                  index,
+                                  categoria.descripcion
+                                )
+                              }
+                            }
+                          },
+                          [_vm._v("Eliminar")]
+                        )
+                      ])
                     ])
-                  ])
-                }),
-                0
-              )
-            ])
+                  }),
+                  0
+                )
+              ]
+            )
           ])
         ])
       ])
