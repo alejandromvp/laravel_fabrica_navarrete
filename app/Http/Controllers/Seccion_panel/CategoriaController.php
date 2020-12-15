@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Seccion_panel\Categoria;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class CategoriaController extends Controller
 {
@@ -40,6 +41,18 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+        /* $validator = $request->validate([
+            'descripcion' => ['required']
+        ]); */
+
+        $validator = Validator::make($request->all(), [
+            'descripcion' => 'required|unique:categorias,descripcion'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
         $categorias = new Categoria();
         $categorias->descripcion = $request->descripcion;
         $categorias->created_at = Carbon::now();
@@ -79,6 +92,14 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'descripcion' => 'required|unique:categorias,descripcion'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        
         //$categoria = Categoria::find($id);
         $categoria = Categoria::where('id_categoria', $id)->first();
         $categoria->descripcion = $request->descripcion;

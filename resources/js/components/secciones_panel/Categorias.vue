@@ -40,7 +40,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" v-show="!editmode" id="addNewLabel">Agregar Nueva Categoria</h5>
-                        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Actualizar categoria: <span style="color:red;">{{form.categoria}}</span></h5>
+                        <h5 class="modal-title" v-show="editmode" id="addNewLabel">Actualizar nombre categoria: <span style="color:red;">{{form.categoria}}</span></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -48,7 +48,8 @@
                     <form @submit.prevent="editmode ? updateCategoria() : AddCategorias()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input class="form-control mb-3" type="text" placeholder="Nombre de la categoria" v-model="new_input_categoria">
+                                <input class="form-control mb-3" type="text" placeholder="Nombre de la categoria">
+                                <small style="color:red;font-weight: bold;">{{ error_input_categoria }} </small>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -69,7 +70,6 @@
         props: [],
         data(){
             return{
-               new_input_categoria: '',
                array_categorias: [],
                editmode:false,
                form:{
@@ -78,18 +78,20 @@
                     categoria:'',
                     created_at:'',
                     updated_at:''
-                }
+                },
+                error_input_categoria: '',
             };
         },
-        mounted() {
-            axios.get('/categorias').then((response) => {
-                this.array_categorias = response.data;
-                
-            });
+        async mounted() {
+                await axios.get('/categorias').then((response) => {
+                    this.array_categorias = response.data;
+                });
+                this.carge_dataTable('#table_categorias');
         },
         methods: {
             Modal_edit_categoria(_categoria, _index){
                 this.editmode = true;
+                this.error_input_categoria = "";
                 this.new_input_categoria = _categoria.descripcion;
                 this.form.id = _categoria.id_categoria;
                 this.form.categoria = _categoria.descripcion;
@@ -99,6 +101,7 @@
             },
             Modal_new_categoria(){
                 this.editmode = false;
+                this.error_input_categoria = "";
                 this.form.id = '';
                 this.form.categoria = '';
                 this.new_input_categoria = '';
@@ -106,7 +109,7 @@
             },
             updateCategoria(){
                 const params = {
-                    descripcion: this.new_input_categoria
+                    descripcion: this.form.categoria
                 };
                 this.new_input_categoria = ''; 
                 axios.put(`/categorias/${this.form.id}`, params).then((response) => {
@@ -114,22 +117,30 @@
                     $('#edit_new_categoria_modal').modal('hide');
                     Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
                 },
-                (error) => { console.log(error) }
-                
+                (error) => { 
+                    this.error_input_categoria = error.response.data.error.descripcion
+                    }
                 );
             },
-            AddCategorias(){
+            async AddCategorias(){
                 const params = {
-                    descripcion : this.new_input_categoria
+                    descripcion : this.form.categoria
                 };
-                this.new_input_categoria = ''; 
-                 axios.post('/categorias', params).then((response) => {
-                     this.array_categorias.unshift(response.data);
-                      $('#edit_new_categoria_modal').modal('hide');
-                      Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
+                
+                await axios.post('/categorias', params).then((response) => {
+                    $('#table_categorias').DataTable().destroy();
+                    //$("#table_categorias tbody").children().remove();
+                    this.form.categoria = ''; 
+                    this.array_categorias.unshift(response.data);
+                    $('#edit_new_categoria_modal').modal('hide');
+                    Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
                     },
-                    (error) => { console.log(error) }
+                    (error) => { 
+                        this.error_input_categoria = error.response.data.error.descripcion
+                     }
                 );
+                this.carge_dataTable('#table_categorias');
+
             },
             onClickDelete(_id, _index, _descripcion){
                 Swal.fire({
@@ -153,12 +164,38 @@
                         )
                     }
                 })
-            } //fin funcion delete
+            }, //fin funcion delete
+
+            carge_dataTable(_id_table){
+                $(_id_table).DataTable({
+                "sPaginationType": "full_numbers",
+                "bInfo": false,
+                "bDestroy": true,
+                "bSort": false, 
+                "language": {
+                  "decimal": "",
+                  "emptyTable": "No hay información",
+                  "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                  "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                  "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                  "infoPostFix": "",
+                  "thousands": ",",
+                  "lengthMenu": "Mostrar _MENU_ Entradas",
+                  "loadingRecords": "Cargando...",
+                  "processing": "Procesando...",
+                  "search": "Buscar:",
+                  "zeroRecords": "Sin resultados encontrados",
+                  "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                  }
+                }
+              });
+            }//fin function carge_dataTable
         }
     }
-    $(document).ready(function() {
-        $('#table_categorias').DataTable();
-    });
 </script>
 
 

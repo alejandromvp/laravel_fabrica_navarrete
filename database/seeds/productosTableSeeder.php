@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Models\Seccion_panel\Productos;
 
-class UsersTableSeeder extends Seeder
+class productosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'alejandro',
+            'name' => 'alejandro',  
             'email' => 'ale@gmail.com',
             'url_photo_profile' => 'icon_profile.png',
             'password'=> bcrypt('1234')

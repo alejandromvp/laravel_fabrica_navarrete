@@ -64,6 +64,7 @@
             };
         },
         mounted() {
+            //console.log(this.user_icon);
         },
         methods: {
             onClickControl_Panel(){
