@@ -22,6 +22,8 @@ php artisan make:migration create_users_table <br/>
 php artisan migrate  <br/>
 php artisan db:seed <br/>
 
+# cambiar version de php instaladas
+sudo update-alternatives --config php
 # comandos deploy vps
 sudo apt-get update <br/>
 sudo apt-get upgrade <br/>
