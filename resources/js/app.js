@@ -7,9 +7,18 @@
 
 require('./bootstrap');
 
-
 window.Vue = require('vue');
 
+import Vue from 'vue'
+import PrimeVue from 'primevue/config'
+import Button from 'primevue/button'
+import Card from 'primevue/card'
+
+import 'primevue/resources/themes/saga-blue/theme.css'      //theme
+import 'primevue/resources/primevue.min.css'              //core css
+import 'primeicons/primeicons.css'                           //icons
+
+Vue.use(PrimeVue);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -43,6 +52,9 @@ Vue.component('reporte-ventas', require('./components/secciones_panel/Reporte_ve
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('Button', Button);
+Vue.component('Card', Card);
 const app = new Vue({
+    primevue: PrimeVue,
     el: '#app',
 });
