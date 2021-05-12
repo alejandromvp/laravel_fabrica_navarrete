@@ -13,6 +13,9 @@ import Vue from 'vue'
 import PrimeVue from 'primevue/config'
 import Button from 'primevue/button'
 import Card from 'primevue/card'
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
 
 import 'primevue/resources/themes/saga-blue/theme.css'      //theme
 import 'primevue/resources/primevue.min.css'              //core css
@@ -54,6 +57,9 @@ Vue.component('reporte-ventas', require('./components/secciones_panel/Reporte_ve
 
 Vue.component('Button', Button);
 Vue.component('Card', Card);
+Vue.component('DataTable', DataTable);
+Vue.component('Column', Column);
+Vue.component('ColumnGroup', ColumnGroup);
 const app = new Vue({
     primevue: PrimeVue,
     el: '#app',

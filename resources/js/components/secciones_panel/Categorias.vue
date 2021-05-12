@@ -6,30 +6,20 @@
                     <div class="card-header">
                         <div class="flex_row">
                             <b class="text-white">LISTA DE CATEGORIAS</b>
-                            <button class="btn btn-success" v-on:click="Modal_new_categoria()">Agregar Categoria</button>
+                            <Button label="Agregar Categoria" class="p-button-success" v-on:click="Modal_new_categoria()"/>
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered" id="table_categorias">
-                            <thead class="bg-light">
-                                <tr>
-                                    <th>Codigo</th>
-                                    <th>Categoria</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(categoria, index) in array_categorias"
-                                :key="categoria.id">
-                                    <th v-text="categoria.id_categoria"></th>
-                                    <th v-text="categoria.descripcion"></th>
-                                    <th>
-                                        <button class="btn btn-warning" v-on:click="Modal_edit_categoria(categoria, index)">Editar</button>
-                                        <button class="btn btn-danger" v-on:click="onClickDelete(categoria.id_categoria, index, categoria.descripcion)">Eliminar</button>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <DataTable :value="array_categorias" responsiveLayout="scroll">
+                            <Column field="id_categoria" header="Code"></Column>
+                            <Column field="descripcion" header="Name"></Column>
+                            <Column :exportable="false">
+                              <template #body="slotProps">
+                                  <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" @click="Modal_edit_categoria(slotProps.data.id_categoria)" />
+                                  <Button icon="pi pi-trash" class="p-button-rounded p-button-warning" @click="onClickDelete(slotProps.id_categoria)" />
+                              </template>
+                          </Column>
+                        </DataTable>
                     </div>
                 </div>
             </div>
@@ -89,15 +79,15 @@
                 this.carge_dataTable('#table_categorias');
         },
         methods: {
-            Modal_edit_categoria(_categoria, _index){
-                this.editmode = true;
-                this.error_input_categoria = "";
-                this.new_input_categoria = _categoria.descripcion;
-                this.form.id = _categoria.id_categoria;
-                this.form.categoria = _categoria.descripcion;
-                this.form.index = _index;
-                $('#edit_new_categoria_modal').modal('show');
-                
+            Modal_edit_categoria(_categoria){
+                alert(_categoria);
+                // this.editmode = true;
+                // this.error_input_categoria = "";
+                // this.new_input_categoria = _categoria.descripcion;
+                // this.form.id = _categoria.id_categoria;
+                // this.form.categoria = _categoria.descripcion;
+                // this.form.index = _index;
+                // $('#edit_new_categoria_modal').modal('show');
             },
             Modal_new_categoria(){
                 this.editmode = false;
@@ -111,13 +101,13 @@
                 const params = {
                     descripcion: this.form.categoria
                 };
-                this.new_input_categoria = ''; 
+                this.new_input_categoria = '';
                 axios.put(`/categorias/${this.form.id}`, params).then((response) => {
                     this.array_categorias.splice(this.form.index, 1, response.data);
                     $('#edit_new_categoria_modal').modal('hide');
                     Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
                 },
-                (error) => { 
+                (error) => {
                     this.error_input_categoria = error.response.data.error.descripcion
                     }
                 );
@@ -126,16 +116,16 @@
                 const params = {
                     descripcion : this.form.categoria
                 };
-                
+
                 await axios.post('/categorias', params).then((response) => {
                     $('#table_categorias').DataTable().destroy();
                     //$("#table_categorias tbody").children().remove();
-                    this.form.categoria = ''; 
+                    this.form.categoria = '';
                     this.array_categorias.unshift(response.data);
                     $('#edit_new_categoria_modal').modal('hide');
                     Swal.fire('Success', "Categoria agregada con exito.", 'success', 1500);
                     },
-                    (error) => { 
+                    (error) => {
                         this.error_input_categoria = error.response.data.error.descripcion
                      }
                 );
@@ -171,7 +161,7 @@
                 "sPaginationType": "full_numbers",
                 "bInfo": false,
                 "bDestroy": true,
-                "bSort": false, 
+                "bSort": false,
                 "language": {
                   "decimal": "",
                   "emptyTable": "No hay información",
@@ -197,5 +187,3 @@
         }
     }
 </script>
-
-
