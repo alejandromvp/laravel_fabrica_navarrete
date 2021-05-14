@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/productos', 'Seccion_panel\ProductosController@index')->name('GetProductos');
+Route::get('/panel_control', 'Seccion_panel\PanelControlController@index')->name('GetData');
 
 // rutas Secciones Panel
 Route::resource('categorias', 'Seccion_panel\CategoriaController');

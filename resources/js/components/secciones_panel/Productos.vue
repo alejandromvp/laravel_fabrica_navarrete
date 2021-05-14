@@ -2,67 +2,41 @@
     <div class="Main_productos">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="flex_row">
-                            <b class="text-white">LISTA DE PRODUCTOS</b>
-                            <button class="btn btn-success" v-on:click="Modal_new_producto()">Agregar Producto</button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div style="overflow-x:auto;">
-                            <table class="table table-bordered">
-                                <thead class="bg-light">
-                                    <tr>
-                                        <th>Codigo</th>
-                                        <th>Imagen</th>
-                                        <th>Descripción</th>
-                                        <th>Categoria</th>
-                                        <th>Stock</th>
-                                        <th>Precio de compra</th>
-                                        <th>Precio de venta</th>
-                                        <th>Agregado</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img src="http://vibradosnavarrete.cl/wp-content/uploads/2019/09/bloque-curvo-768x1024.jpg" alt="" width="80" height="70">
-                                        </td>
-                                        <td>Bloque curvo</td>
-                                        <td>Bloques</td>
-                                        <td>100</td>
-                                        <td>15.000 CLP</td>
-                                        <td>21.000 CLP</td>
-                                        <td>25-08-2020 9:10:54 am</td>
-                                        <td>
-                                            <button class="btn btn-warning">Editar</button>
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img src="http://vibradosnavarrete.cl/wp-content/uploads/2019/09/placa-humita-1024x303.jpg" alt="" width="80" height="70">
-                                        </td>
-                                        <td>Placa Humita</td>
-                                        <td>Panderetas</td>
-                                        <td>100</td>
-                                        <td>15.000 CLP</td>
-                                        <td>21.000 CLP</td>
-                                        <td>25-08-2020 9:10:54 am</td>
-                                        <td>
-                                            <button class="btn btn-warning">Editar</button>
-                                            <button class="btn btn-danger">Eliminar</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+              <Card>
+                  <template #header>
+                      <div class="flex_row" style="padding:0.5cm;background:#33415c;">
+                          <b style="color:white;">LISTA DE PRODUCTOS</b>
+                          <Button label="Agregar Producto" class="p-button-success" v-on:click="Modal_new_categoria()"/>
+                      </div>
+                  </template>
+                  <template #content>
+                      <DataTable :value="array_productos" responsiveLayout="scroll">
+                          <Column field="id_producto" header="#id producto"></Column>
+                          <Column field="nombre_producto" header="nombre producto"></Column>
+                          <Column header="Image">
+                               <template #body="slotProps">
+                                  <img :src="slotProps.data.url_img_producto" :alt="slotProps.data.nombre_producto" class="product-image" width="70" height="70"/>
+                              </template>
+                          </Column>
+                          <Column header="stock_productos">
+                            <template #body="slotProps">
+                                 <InputNumber v-model="slotProps.data.stock_productos" mode="decimal" />
+                            </template>
+                          </Column>
+                          <Column header="Precio Venta">
+                            <template #body="slotProps">
+                                 <InputNumber v-model="slotProps.data.precio_venta" mode="currency" currency="USD" locale="en-US" />
+                            </template>
+                          </Column>
+                          <Column :exportable="false">
+                            <template #body="slotProps">
+                                <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" v-tooltip.top="'Editar Producto'"/>
+                                <Button icon="pi pi-trash" class="p-button-rounded p-button-warning" v-tooltip.top="'Eliminar Producto'"/>
+                            </template>
+                        </Column>
+                      </DataTable>
+                  </template>
+              </Card>
             </div>
         </div>
         <div class="modal fade" id="edit_new_categoria_modal" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
@@ -147,6 +121,7 @@
         data(){
             return{
                editmode:false,
+               array_productos: [],
                form:{
                     index: '',
                     nombre_producto:'',
@@ -161,16 +136,15 @@
                 }
             };
         },
-        mounted() {
-            axios.get('/categorias').then((response) => {
-                $.each(response.data, function (key, item) {
-                    $("#form_select_categoria").append('<option value="' + item['id_categoria'] + '">' + item['descripcion'] + '</option>');
-                });
-            }); 
+        async mounted() {
+          await axios.get('/productos').then((response) => {
+              this.array_productos = response.data;
+              console.log(this.array_productos);
+          });
         },
         methods: {
             Modal_edit_categoria(_categoria, _index){
-                
+
             },
             Modal_new_producto(){
                 this.editmode = false;
@@ -184,7 +158,7 @@
                 $('#edit_new_categoria_modal').modal('show');
             },
             updateCategoria(){
-                
+
             },
             AddCategorias(){
                console.log(this.form.id_categoria);

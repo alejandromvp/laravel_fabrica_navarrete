@@ -2,26 +2,26 @@
     <div class="Main_Categorias">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="flex_row">
-                            <b class="text-white">LISTA DE CATEGORIAS</b>
-                            <Button label="Agregar Categoria" class="p-button-success" v-on:click="Modal_new_categoria()"/>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <DataTable :value="array_categorias" responsiveLayout="scroll">
-                            <Column field="id_categoria" header="Code"></Column>
-                            <Column field="descripcion" header="Name"></Column>
-                            <Column :exportable="false">
-                              <template #body="slotProps">
-                                  <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" @click="Modal_edit_categoria(slotProps.data.id_categoria)" />
-                                  <Button icon="pi pi-trash" class="p-button-rounded p-button-warning" @click="onClickDelete(slotProps.id_categoria)" />
-                              </template>
-                          </Column>
-                        </DataTable>
-                    </div>
-                </div>
+                  <Card>
+                      <template #header>
+                          <div class="flex_row" style="padding:0.5cm;background:#33415c;">
+                              <b style="color:white;">LISTA DE CATEGORIAS</b>
+                              <Button label="Agregar Categoria" class="p-button-success" v-on:click="Modal_new_categoria()"/>
+                          </div>
+                      </template>
+                      <template #content>
+                          <DataTable :value="array_categorias" responsiveLayout="scroll">
+                              <Column field="id_categoria" header="Code"></Column>
+                              <Column field="descripcion" header="Name"></Column>
+                              <Column :exportable="false">
+                                <template #body="slotProps">
+                                    <Button icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" @click="Modal_edit_categoria(slotProps.data)" v-tooltip.top="'Editar Categoria'"/>
+                                    <Button icon="pi pi-trash" class="p-button-rounded p-button-warning" @click="onClickDelete(slotProps.data)" v-tooltip.top="'Eliminar Categoria'"/>
+                                </template>
+                            </Column>
+                          </DataTable>
+                      </template>
+                  </Card>
             </div>
         </div>
 
@@ -38,7 +38,7 @@
                     <form @submit.prevent="editmode ? updateCategoria() : AddCategorias()">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input class="form-control mb-3" type="text" placeholder="Nombre de la categoria">
+                                <input class="form-control mb-3" type="text" placeholder="Nombre de la categoria" v-model="descripcion_categoria">
                                 <small style="color:red;font-weight: bold;">{{ error_input_categoria }} </small>
                             </div>
                         </div>
@@ -70,6 +70,7 @@
                     updated_at:''
                 },
                 error_input_categoria: '',
+                descripcion_categoria:''
             };
         },
         async mounted() {
@@ -80,14 +81,10 @@
         },
         methods: {
             Modal_edit_categoria(_categoria){
-                alert(_categoria);
-                // this.editmode = true;
-                // this.error_input_categoria = "";
-                // this.new_input_categoria = _categoria.descripcion;
-                // this.form.id = _categoria.id_categoria;
-                // this.form.categoria = _categoria.descripcion;
-                // this.form.index = _index;
-                // $('#edit_new_categoria_modal').modal('show');
+                this.editmode = true;
+                this.form.id = _categoria.id_categoria;
+                this.form.categoria = _categoria.descripcion;
+                $('#edit_new_categoria_modal').modal('show');
             },
             Modal_new_categoria(){
                 this.editmode = false;
@@ -99,13 +96,18 @@
             },
             updateCategoria(){
                 const params = {
-                    descripcion: this.form.categoria
+                    descripcion: this.descripcion_categoria
                 };
-                this.new_input_categoria = '';
                 axios.put(`/categorias/${this.form.id}`, params).then((response) => {
-                    this.array_categorias.splice(this.form.index, 1, response.data);
+                    this.array_categorias.findIndex((elemento, indice) => {
+                      if (elemento.id_categoria === response.data.id_categoria) {
+                        this.array_categorias.splice(indice, 1, response.data);
+                      }
+                    });
+                    //this.array_categorias.splice(this.form.index, 1, response.data);
                     $('#edit_new_categoria_modal').modal('hide');
                     Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
+                    this.descripcion_categoria = '';
                 },
                 (error) => {
                     this.error_input_categoria = error.response.data.error.descripcion
@@ -114,11 +116,11 @@
             },
             async AddCategorias(){
                 const params = {
-                    descripcion : this.form.categoria
+                    descripcion : this.descripcion_categoria
                 };
 
                 await axios.post('/categorias', params).then((response) => {
-                    $('#table_categorias').DataTable().destroy();
+                    //$('#table_categorias').DataTable().destroy();
                     //$("#table_categorias tbody").children().remove();
                     this.form.categoria = '';
                     this.array_categorias.unshift(response.data);
@@ -132,9 +134,9 @@
                 this.carge_dataTable('#table_categorias');
 
             },
-            onClickDelete(_id, _index, _descripcion){
+            onClickDelete(_objeto_categoria){
                 Swal.fire({
-                    title: 'Seguro que deseas eliminar categoria: '+_descripcion,
+                    title: 'Seguro que deseas eliminar categoria: '+ _objeto_categoria.descripcion,
                     text: "No podras revertir esta acción!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -143,47 +145,19 @@
                     confirmButtonText: 'Eliminar!'
                     }).then((result) => {
                     if (result.value) {
-                        axios.delete(`/categorias/${_id}`).then(() => {
-                                this.$emit('delete');
-                                this.array_categorias.splice(_index, 1);
+                        axios.delete(`/categorias/${_objeto_categoria.id_categoria}`).then((response) => {
+                          console.log(response.data);
+                                //this.$emit('delete');
+                                //this.array_categorias.splice(_index, 1);
                             });
                         Swal.fire(
                         'Eliminado!',
-                        'La categoria: '+_descripcion+' ha sido eliminada exitosamente',
+                        'La categoria: '+_objeto_categoria.descripcion+' ha sido eliminada exitosamente',
                         'success'
                         )
                     }
                 })
             }, //fin funcion delete
-
-            carge_dataTable(_id_table){
-                $(_id_table).DataTable({
-                "sPaginationType": "full_numbers",
-                "bInfo": false,
-                "bDestroy": true,
-                "bSort": false,
-                "language": {
-                  "decimal": "",
-                  "emptyTable": "No hay información",
-                  "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                  "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-                  "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-                  "infoPostFix": "",
-                  "thousands": ",",
-                  "lengthMenu": "Mostrar _MENU_ Entradas",
-                  "loadingRecords": "Cargando...",
-                  "processing": "Procesando...",
-                  "search": "Buscar:",
-                  "zeroRecords": "Sin resultados encontrados",
-                  "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Siguiente",
-                    "previous": "Anterior"
-                  }
-                }
-              });
-            }//fin function carge_dataTable
         }
     }
 </script>

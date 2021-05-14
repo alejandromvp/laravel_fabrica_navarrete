@@ -9,29 +9,23 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Vue from 'vue'
-import PrimeVue from 'primevue/config'
-import Button from 'primevue/button'
-import Card from 'primevue/card'
+import Vue from 'vue';
+import PrimeVue from 'primevue/config';
+
+import Button from 'primevue/button';
+import Card from 'primevue/card';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
+import Fieldset from 'primevue/fieldset';
+import InputNumber from 'primevue/inputnumber';
+import Tooltip from 'primevue/tooltip';
 
-import 'primevue/resources/themes/saga-blue/theme.css'      //theme
-import 'primevue/resources/primevue.min.css'              //core css
-import 'primeicons/primeicons.css'                           //icons
+import 'primevue/resources/themes/saga-blue/theme.css';      //theme
+import 'primevue/resources/primevue.min.css';              //core css
+import 'primeicons/primeicons.css';                           //icons
 
 Vue.use(PrimeVue);
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('table-pensamientos', require('./components/Table_pensamientos.vue').default);
 Vue.component('container', require('./components/Sistema_Main.vue').default);
@@ -60,6 +54,12 @@ Vue.component('Card', Card);
 Vue.component('DataTable', DataTable);
 Vue.component('Column', Column);
 Vue.component('ColumnGroup', ColumnGroup);
+Vue.component('Fieldset', Fieldset);
+Vue.component('InputNumber', InputNumber);
+
+
+Vue.directive('tooltip', Tooltip);
+
 const app = new Vue({
     primevue: PrimeVue,
     el: '#app',

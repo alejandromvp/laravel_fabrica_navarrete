@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Seccion_panel;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Seccion_panel\Categoria;
-use DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Validator;
 
-class CategoriaController extends Controller
+use App\Models\Seccion_panel\Categoria;
+use App\Models\Seccion_panel\Productos;
+
+class PanelControlController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,9 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //return $categorias = Categoria::all()->orderBy('created_at', 'DESC');
-        return $categorias = DB::select("select * from categorias ORDER BY created_at DESC");
-
+        $productos = Productos::all();
+        $categorias = Productos::all();
+        return response()->json(['count_productos' => count($productos), 'count_categorias' => count($categorias)]);
     }
 
     /**
@@ -41,24 +40,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        /* $validator = $request->validate([
-            'descripcion' => ['required']
-        ]); */
-
-        $validator = Validator::make($request->all(), [
-            'descripcion' => 'required|unique:categorias,descripcion'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
-        }
-
-        $categorias = new Categoria();
-        $categorias->descripcion = $request->descripcion;
-        $categorias->created_at = Carbon::now();
-        $categorias->save();
-
-        return $categorias;
+        //
     }
 
     /**
@@ -92,21 +74,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'descripcion' => 'required|unique:categorias,descripcion'
-        // ]);
         //
-        // if ($validator->fails()) {
-        //     return response()->json(['error' => $validator->errors()], 401);
-        // }
-
-        //$categoria = Categoria::find($id);
-        $categoria = Categoria::where('id_categoria', $id)->first();
-        $categoria->descripcion = $request->descripcion;
-        $categoria->updated_at = Carbon::now();
-        $categoria->save();
-        return $categoria;
-
     }
 
     /**
@@ -117,8 +85,6 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $categoria = Categoria::find($id);
-        $categoria->delete();
-        return $categoria;
+        //
     }
 }
