@@ -77,7 +77,6 @@
                 await axios.get('/categorias').then((response) => {
                     this.array_categorias = response.data;
                 });
-                this.carge_dataTable('#table_categorias');
         },
         methods: {
             Modal_edit_categoria(_categoria){
@@ -104,7 +103,6 @@
                         this.array_categorias.splice(indice, 1, response.data);
                       }
                     });
-                    //this.array_categorias.splice(this.form.index, 1, response.data);
                     $('#edit_new_categoria_modal').modal('hide');
                     Swal.fire('Success', "Categoria editada con exito.", 'success', 1500);
                     this.descripcion_categoria = '';
@@ -120,8 +118,6 @@
                 };
 
                 await axios.post('/categorias', params).then((response) => {
-                    //$('#table_categorias').DataTable().destroy();
-                    //$("#table_categorias tbody").children().remove();
                     this.form.categoria = '';
                     this.array_categorias.unshift(response.data);
                     $('#edit_new_categoria_modal').modal('hide');
@@ -146,10 +142,12 @@
                     }).then((result) => {
                     if (result.value) {
                         axios.delete(`/categorias/${_objeto_categoria.id_categoria}`).then((response) => {
-                          console.log(response.data);
-                                //this.$emit('delete');
-                                //this.array_categorias.splice(_index, 1);
-                            });
+                          this.array_categorias.findIndex((elemento, indice) => {
+                            if (elemento.id_categoria === response.data.id_categoria) {
+                              this.array_categorias.splice(indice, 1);
+                            }
+                          });
+                        });
                         Swal.fire(
                         'Eliminado!',
                         'La categoria: '+_objeto_categoria.descripcion+' ha sido eliminada exitosamente',

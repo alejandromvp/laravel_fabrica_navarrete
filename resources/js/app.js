@@ -19,7 +19,11 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';     //optional for column grouping
 import Fieldset from 'primevue/fieldset';
 import InputNumber from 'primevue/inputnumber';
+import Dropdown from 'primevue/dropdown';
 import Tooltip from 'primevue/tooltip';
+import Dialog from 'primevue/dialog';
+import InputText from 'primevue/inputtext';
+
 
 import 'primevue/resources/themes/saga-blue/theme.css';      //theme
 import 'primevue/resources/primevue.min.css';              //core css
@@ -56,6 +60,10 @@ Vue.component('Column', Column);
 Vue.component('ColumnGroup', ColumnGroup);
 Vue.component('Fieldset', Fieldset);
 Vue.component('InputNumber', InputNumber);
+Vue.component('Dropdown', Dropdown);
+Vue.component('Dialog', Dialog);
+Vue.component('InputText', InputText);
+
 
 
 Vue.directive('tooltip', Tooltip);

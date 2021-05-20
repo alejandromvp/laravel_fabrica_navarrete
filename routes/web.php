@@ -21,8 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/productos', 'Seccion_panel\ProductosController@index')->name('GetProductos');
+Route::get('/productos/{id}', 'Seccion_panel\ProductosController@show')->name('GetProductosId');
 Route::get('/panel_control', 'Seccion_panel\PanelControlController@index')->name('GetData');
 
+Route::post('/productos', 'Seccion_panel\ProductosController@show')->name('InsertProducto');
+//->middleware('auth', 'role:admin')
 // rutas Secciones Panel
 Route::resource('categorias', 'Seccion_panel\CategoriaController');
 
